@@ -155,8 +155,8 @@ input:checked ~ .filterBox {
 /* Create a custom checkbox */
 .checkmark {
   position: absolute;
-  margin-left: 2px;
-  margin-top: 2px;
+  margin-left: 0.1em;
+  margin-top: 0.1em;
   top: 0;
   left: 0;
   height: 34px;
