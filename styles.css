@@ -133,6 +133,10 @@ input:checked ~ .filterBox {
   background-color: #6279B8!important;
 }
 
+.strike {
+  text-decoration: line-through;
+}
+
 .container {
   display: block;
   position: relative;

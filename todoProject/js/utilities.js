@@ -45,6 +45,9 @@ function formatToDo(toDo) {
     labelItem.classList.add('container');
     labelItem.setAttribute('data-id', `${toDo.id}`);
     labelItem.innerHTML = toDo.content;
+    if(toDo.completed){
+        labelItem.classList.add('strike');
+    }
 
     const inputItem = document.createElement("input");
     inputItem.type = 'checkbox';
