@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo List</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div id="list">
+    <h1 id="toDoHead">ToDos</h1>
+    <ol id="toDoList">
+    </ol>
+    <footer>
+        <p id="numTasks">Num Tasks</p>
+        <label class="container"><input type="checkbox" id="All" checked="checked"><span class="filterBox">All</span></label>
+        <label class="container"><input type="checkbox" id="Active"><span class="filterBox">Active</span></label>
+        <label class="container"><input type="checkbox" id="Completed"><span class="filterBox">Completed</span></label>
+    </footer>
+
+    <form name="addItem" action="index.html">
+      <input name="newToDo" type="text" required>
+      <button type="submit" class="button circle submit">+</button>
+    </form>
+    </div>
+    
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
