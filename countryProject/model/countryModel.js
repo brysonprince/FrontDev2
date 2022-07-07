@@ -1,33 +1,30 @@
 const COUNTRIES_API = 'https://restcountries.com/v3.1';
 
 class countryModel {
-    // get all
-    getAll = async () => {
-        try {
-            const response = await fetch(COUNTRIES_API + '/all');
+    // get JSON
+    getJSON(url) {
+        return fetch(url)
+        .then(function (response) {
             if (response.ok){
-                const resJSON = await response.json();
-                Promise.resolve(resJSON);
+                return response.json();
             }
             else {
-                Promise.reject(response.statusText);
+                throw Error(response.statusText);
             }
-        }
-        catch {
-            Promise.reject('There was an error retrieving the countries')
-        }
+        })
+        .catch (function (error) {
+            console.log(error);
+        });
+    }
+
+    // get all
+    getAll() {
+        return this.getJSON(COUNTRIES_API + '/all');
     }
 
     // get one
-    getOne = async (req, res) => {
-        fetch(COUNTRIES_API + '/name' + country)
-        .then((response) => {
-            if (response.ok){
-                return response;
-            }
-            throw Error(response.statusText);
-        })
-        .catch( error => console.log('There was an error retrieving countries') );
+    getOne(countryName) {
+        return this.getJSON(COUNTRIES_API + '/name' + countryName);
     }
 }
 

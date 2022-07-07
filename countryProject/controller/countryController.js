@@ -1,16 +1,23 @@
-import countryModel from "../model/countryModel.js";
+import CountryModel from "../model/countryModel.js";
 import CountryView from "../view/countryView.js";
 
 class CountryController {
     constructor(parentId) {
         this.parentElement = document.getElementById(parentId);
-        this.countryModel = new countryModel();
+        this.countryModel = new CountryModel();
         this.countryView = new CountryView();
     }
 
     displayList() {
-        const countries = this.countryModel.getAll().then(console.log).catch(console.log);
-        this.countryView.buildList(this.parentElement, countries);
+        const thisView = this.countryView;
+        const thisParent = this.parentElement;
+
+        this.countryModel.getAll().then(function (data) {
+            const countries = data;
+
+            thisView.buildList(thisParent, countries);
+        });
+        
     }
 }
 

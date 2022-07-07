@@ -1,6 +1,7 @@
-import countryController from './controller/countryController.js';
+import CountryController from './controller/countryController.js';
+
+const countryController = new CountryController('countries');
 
 window.addEventListener('load', () => {
-    const countries = new countryController('countries');
-    countries.displayList();
+    countryController.displayList();
   });
