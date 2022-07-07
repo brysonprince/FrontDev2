@@ -8,15 +8,19 @@ class CountryView {
     }
 
     buildCountry(country) {
-        console.log(country);
         const item = document.createElement('div');
         item.classList.add('card');
-        item.innerHTML = `<img src="${country.flags.png}" alt="${country.name.official} flag" style="width:80%">
-                        <div class="container">
+        item.innerHTML = `<img src="${country.flags.png}" alt="${country.name.official} flag" style="width:100%; height:60%">
+                        <div class="country-container">
                             <h4><b>${country.name.official}</b></h4>
-                            <p>Subregion: ${country.subregion}</p>
+                            <p><b>Subregion:</b> ${country.subregion}</p>
                         </div>`
         return item
+    }
+
+    buildCountryDetails(country) {
+        const item = document.createElement('div');
+
     }
 }
 
