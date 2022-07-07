@@ -2,24 +2,27 @@ const COUNTRIES_API = 'https://restcountries.com/v3.1';
 
 class countryModel {
     // get all
-    getAll() {
-        fetch(COUNTRIES_API + '/all')
-        .then((response) => {
+    getAll = async () => {
+        try {
+            const response = await fetch(COUNTRIES_API + '/all');
             if (response.ok){
-                console.log(response);
-                return response;
+                const resJSON = await response.json();
+                Promise.resolve(resJSON);
             }
-            throw Error(response.statusText);
-        })
-        .catch( error => console.log('There was an error retrieving countries') );
+            else {
+                Promise.reject(response.statusText);
+            }
+        }
+        catch {
+            Promise.reject('There was an error retrieving the countries')
+        }
     }
 
     // get one
-    getOne(country) {
+    getOne = async (req, res) => {
         fetch(COUNTRIES_API + '/name' + country)
         .then((response) => {
             if (response.ok){
-                console.log(response);
                 return response;
             }
             throw Error(response.statusText);
