@@ -229,16 +229,9 @@ input:checked ~ .filterBox {
   width: 100%;
 }
 
-.navbar ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar li a {
+.navbar a {
   display: block;
 }
-
 
 .dropbtn {
   background-color: antiquewhite;
@@ -278,7 +271,23 @@ input:checked ~ .filterBox {
 }
 
 .show {
-  display:block;
+  display: block;
+}
+
+.search-container input[type=text] {
+  border: 1px solid black;  
+  width: 92%;
+}
+
+.search-container button {
+  width: 100%;
+  padding: 5px;
+}
+
+.navbar form {
+  position: inherit;
+  width: 100%;
+  text-align: center;
 }
 
 @media screen and (min-width: 900px) {
