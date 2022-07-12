@@ -14,7 +14,7 @@ class CountryView {
                         <div class="country-container">
                             <h4><b>${country.name.official}</b></h4>
                             <p><b>Subregion:</b> ${country.subregion}</p>
-                        </div>`
+                        </div>`;
         return item
     }
 
