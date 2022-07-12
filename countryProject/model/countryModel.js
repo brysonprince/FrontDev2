@@ -7,7 +7,7 @@ class countryModel {
         .then((response) => {
             if (response.ok){
                 console.log(response);
-                return response;
+                return response.json();
             }
             throw Error(response.statusText);
         })
@@ -20,7 +20,7 @@ class countryModel {
         .then((response) => {
             if (response.ok){
                 console.log(response);
-                return response;
+                return response.json();
             }
             throw Error(response.statusText);
         })
