@@ -11,7 +11,11 @@ class CountryController {
     }
 
     displayNav(){
-        this.parentElement.appendChild(this.navView.buildNavBar());
+        const navElement = document.getElementById('nav');
+        const toAppend = this.navView.buildNavBar();
+
+        navElement.appendChild(toAppend.buttonItem);
+        navElement.appendChild(toAppend.divItem);
     }
 
     displayList() {
@@ -32,6 +36,15 @@ class CountryController {
         }
         else {
             console.log('dropdown showing')
+        }
+    }
+
+    toggleDropdownButton(){
+        if(window.innerWidth < 900){
+            this.navView.showDropdownButton(true);
+        }
+        if(window.innerWidth >= 900) {
+            this.navView.showDropdownButton(false);
         }
     }
 }
