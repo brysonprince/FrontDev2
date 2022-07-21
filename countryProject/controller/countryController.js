@@ -18,16 +18,36 @@ class CountryController {
         navElement.appendChild(toAppend.divItem);
     }
 
-    displayList() {
+    displayList(data) {
+        let countries = data;
+
+        if (!countries){
+            this.getCountries().then((data) => {
+                countries = data;
+                this.buildList(countries);
+            });
+        }
+        else {
+            this.buildList(countries);
+        }
+    }
+
+    displayDetails(countryCode) {
         const thisView = this.countryView;
         const thisParent = this.parentElement;
 
-        this.countryModel.getAll().then(function (data) {
-            const countries = data;
+        this.countryModel.getOne(countryCode).then((data) => {
+            const countryDetails = thisView.buildCountryDetails(data[0]);
 
-            thisView.buildList(thisParent, countries);
+            thisParent.appendChild(countryDetails);
+
+            const closeBtn = countryDetails.firstChild.firstElementChild;
+
+            // remove modal container if X is clicked
+            closeBtn.addEventListener("click", () => {
+                thisParent.removeChild(countryDetails);
+            });
         });
-        
     }
 
     toggleDropdown(){
@@ -47,6 +67,35 @@ class CountryController {
             this.navView.showDropdownButton(false);
         }
     }
+
+    buildList(countries) {
+        for(let i in countries) {
+            const countryCard = this.countryView.buildCountry(countries[i]);
+            countryCard.onclick = () => {
+                this.displayDetails(countries[i].cca3);
+            };
+            this.parentElement.appendChild(countryCard);
+        }
+    }
+
+    // async functions
+    getCountries = async () => {
+        return await this.countryModel.getAll();
+    }
+
+    searchByName = async (searchTerm) => {
+        const countries = await this.getCountries();
+        let matches = [];
+
+        for(let i in countries) {
+            const name = countries[i].name.official.toString().toLowerCase();
+            if (name.includes(searchTerm.toString().toLowerCase())){
+                matches.push(countries[i]);
+            }
+        }
+        return matches;
+    }
+    
 }
 
 export default CountryController;

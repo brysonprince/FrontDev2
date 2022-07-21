@@ -19,12 +19,12 @@ class countryModel {
 
     // get all
     getAll() {
-        return this.getJSON(COUNTRIES_API + '/all');
+        return this.getJSON(`${COUNTRIES_API}/all`);
     }
 
     // get one
-    getOne(countryName) {
-        return this.getJSON(COUNTRIES_API + '/name' + countryName);
+    getOne(countryCode) {
+        return this.getJSON(`${COUNTRIES_API}/alpha/${countryCode}`);
     }
 }
 

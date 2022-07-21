@@ -13,8 +13,8 @@ class NavView {
         divItem.innerHTML = `<a href=index.html>Home</a>
                             <a href="">About</a>
                             <div class="search-container">
-                                <form name='search' action='/search'>
-                                <input type="text" placeholder="Search..." name='searchCountry'>
+                                <form name='search' id='country-search' action='#'>
+                                <input type="text" placeholder="Search..." name='searchTerm'>
                                 <button type="submit"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>`;
